@@ -84,7 +84,7 @@
           </li>
 
           <li>
-            <a href="#" class="navbar-link hover-1" data-nav-toggler>Contact</a>
+            <a href="#footer" class="navbar-link hover-1" data-nav-toggler>Contact</a>
           </li>
 
         </ul>
@@ -1133,7 +1133,7 @@
     - #FOOTER
   -->
 
-  <footer>
+  <footer id="footer">
     <div class="container">
 
       <div class="card footer">
@@ -1159,91 +1159,104 @@
 
           </div>
 
-          <div class="footer-list">
+           <div class="footer-list">
 
-            <p class="footer-list-title">Categories</p>
+            <p class="footer-list-title">Tag</p>
 
             <ul>
 
               <li>
-                <a href="#" class="footer-link hover-2">Action</a>
+                <a class="footer-link hover-2">Web</a>
               </li>
 
               <li>
-                <a href="#" class="footer-link hover-2">Business</a>
+                <a class="footer-link hover-2">Learn</a>
               </li>
 
               <li>
-                <a href="#" class="footer-link hover-2">Adventure</a>
+                <a class="footer-link hover-2">Code</a>
               </li>
 
               <li>
-                <a href="#" class="footer-link hover-2">Canada</a>
+                <a class="footer-link hover-2">HardSkill</a>
               </li>
 
               <li>
-                <a href="#" class="footer-link hover-2">America</a>
+                <a  class="footer-link hover-2">SoftSkill</a>
               </li>
 
-              <li>
-                <a href="#" class="footer-link hover-2">Curiosity</a>
-              </li>
-
-              <li>
-                <a href="#" class="footer-link hover-2">Animal</a>
-              </li>
-
-              <li>
-                <a href="#" class="footer-link hover-2">Dental</a>
-              </li>
-
-              <li>
-                <a href="#" class="footer-link hover-2">Biology</a>
-              </li>
-
-              <li>
-                <a href="#" class="footer-link hover-2">Design</a>
-              </li>
-
-              <li>
-                <a href="#" class="footer-link hover-2">Breakfast</a>
-              </li>
-
-              <li>
-                <a href="#" class="footer-link hover-2">Dessert</a>
-              </li>
-
-            </ul>
-
-          </div>
+          </div> 
 
           <div class="footer-list">
 
-            <p class="footer-list-title">Newsletter</p>
+            <p class="footer-list-title">Collab / Job</p>
 
             <p class="footer-text">
-              Sign up to be first to receive the latest stories inspiring us, case studies, and industry news.
+              Please Contact me bellow, for a job or collab.
             </p>
 
-            <div class="input-wrapper">
-              <input type="text" name="name" placeholder="Your name" required class="input-field" autocomplete="off">
+            <div class="form-container">
+              <h2>Send a Message</h2>
+              <div class="input-wrapper">
+                <input type="text" id="from_name" name="name" placeholder="Your name" required class="input-field" autocomplete="off">
+                <ion-icon name="person-outline" aria-hidden="true"></ion-icon>
+              </div>
+          
+              <div class="input-wrapper">
+                <input type="email" id="email_address" name="email_address" placeholder="Email address" required class="input-field" autocomplete="off">
+                <ion-icon name="mail-outline" aria-hidden="true"></ion-icon>
+              </div>
 
-              <ion-icon name="person-outline" aria-hidden="true"></ion-icon>
+              <div class="input-wrapper">
+                <input type="email" id="message" name="message" placeholder="type your message" required class="input-field" autocomplete="off">
+                <ion-icon name="mail-outline" aria-hidden="true"></ion-icon>
+              </div>
+          
+              <a href="#" class="btn btn-primary" id="sendEmailBtn">
+                <span class="span">Send to Email</span>
+                <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
+              </a>
             </div>
 
-            <div class="input-wrapper">
-              <input type="email" name="email_address" placeholder="Emaill address" required class="input-field"
-                autocomplete="off">
+            <!-- Script email !! -->
+              <!-- Tambahkan script EmailJS -->
+              <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
+              <script type="text/javascript">
+                (function () {
+                  emailjs.init('tIeBTAIstKvEOhqxb'); // Ganti dengan public key EmailJS Anda
+                })();
+              </script>
 
-              <ion-icon name="mail-outline" aria-hidden="true"></ion-icon>
-            </div>
+              <!-- JavaScript untuk mengirim email -->
+              <script type="text/javascript">
+                document.getElementById('sendEmailBtn').addEventListener('click', function(event) {
+                  event.preventDefault(); // Mencegah default link behavior
 
-            <a href="#" class="btn btn-primary">
-              <span class="span">Subscribe.</span>
+                  var from_name = document.getElementById('from_name').value;
+                  var email = document.getElementById('email_address').value;
+                  var message = document.getElementById('message').value;
 
-              <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
-            </a>
+                  var templateParams = {
+                    from_name: from_name,
+                    message: message,
+                    from_email: email,
+                    to_email: 'riickyjohanness@gmail.com'
+                  };
 
+                  emailjs.send('service_m7xhyvo', 'template_df1s0vj', templateParams)
+                    .then(function(response) {
+                      alert('Email successfully sent!', response.status, response.text);
+                      // Mengosongkan input field setelah pengiriman berhasil
+                      document.getElementById('from_name').value = '';
+                      document.getElementById('email_address').value = '';
+                      document.getElementById('message').value = '';
+                    }, function(error) {
+                      alert('Failed to send email...', error);
+                    });
+                });
+              </script>
+
+              
           </div>
 
         </div>
@@ -1256,24 +1269,17 @@
 
           <ul class="social-list">
 
+    
             <li>
-              <a href="#" class="social-link">
-                <ion-icon name="logo-twitter"></ion-icon>
+              <a href="https://github.com/jr-repository" class="social-link">
+                <ion-icon name="logo-github"></ion-icon>
 
-                <span class="span">Twitter</span>
+                <span class="span">Github</span>
               </a>
             </li>
 
             <li>
-              <a href="#" class="social-link">
-                <ion-icon name="logo-linkedin"></ion-icon>
-
-                <span class="span">LinkedIn</span>
-              </a>
-            </li>
-
-            <li>
-              <a href="#" class="social-link">
+              <a href="instagram.com/richyjohannes" class="social-link">
                 <ion-icon name="logo-instagram"></ion-icon>
 
                 <span class="span">Instagram</span>
